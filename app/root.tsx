@@ -1,4 +1,3 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
@@ -8,30 +7,26 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { NextUIProvider } from "@nextui-org/react";
 
-export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-];
+import styles from "./tailwind.css";
+
+export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
+    <body>
+      {children}
+
+      <LiveReload />
+    </body>
   );
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <NextUIProvider>
+      <Outlet />
+    </NextUIProvider>
+  );
 }
