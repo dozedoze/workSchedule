@@ -11,5 +11,5 @@ export default {
     extend: {},
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui({ prefix: "schedule" })],
 } satisfies Config;

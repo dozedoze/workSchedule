@@ -3,7 +3,7 @@ import { Input, Button } from "@nextui-org/react";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
+    { title: "首页" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
